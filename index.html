@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Reversal</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <!-- Task 1 -->
+     <h3>Task 1</h3>
+    <h2>String Reversal</h2>
+    <input type="text" id="stringInput" placeholder="Enter a string">
+    <button onclick="reverseString()">Reverse String</button>
+    <h1 id="output1"></h1><br>
+
+    <!-- Task 2 -->
+     <h3>Task 2</h3>
+    <h2>Prime Number Checker</h2>
+    <input type="number" id="numInput" placeholder="Enter a number">
+    <button onclick="checkPrime()">Check</button>
+    <h1 id="output2"></h1><br>
+
+    <!-- Task 3 -->
+     <h3>Task 3</h3>
+    <h2>Remove Duplicates from Array</h2>
+    <input type="text" id="arrInput1" placeholder="Enter comma-separated values (e.g. 1,2,2,3)">
+    <button onclick="removeDuplicates()">Remove</button>
+    <h1 id="output3"></h1><br>
+
+    <!-- Task 4 -->
+     <h3>Task 4</h3>
+    <h2>Count Occurrences of Elements</h2>
+    <input type="text" id="arrInput2" placeholder="Enter comma-separated values (e.g. a,b,a,c,b)">
+    <button onclick="countOccurrences()">Count</button>
+    <h1 id="output4"></h1><br>
+
+    <!-- Task 5 -->
+     <h3>Task 5</h3>
+    <h2>Palindrome Checker</h2>
+    <input type="text" id="palInput" placeholder="Enter a string">
+    <button onclick="checkPalindrome()">Check</button>
+    <h1 id="output5"></h1>
+<style>
+    /* ✅ General Page Styling */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #0a56ba;
+      margin: 0;
+      padding: 40px;
+      justify-content: center;
+    }
+
+    h2 {
+      color: #f9f5f5;
+      margin-bottom: 10px;
+      
+    }
+
+    /* ✅ Task Card Layout */
+    .task-card {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px 25px;
+      margin-bottom: 30px;
+      width: 100%;
+      max-width: 500px;
+    }
+
+    /* ✅ Input & Button Styles */
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    /* ✅ Output Styling */
+    h1 {
+      color: #007bff;
+      font-size: 20px;
+      margin-top: 10px;
+      word-wrap: break-word;
+    }
+
+    /* ✅ Center Layout */
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+</style>
+    <script>
+        // Task 1: Reverse String
+        function reverseString() {
+            const str = document.getElementById("stringInput").value;
+            document.getElementById("output1").innerHTML = str.split('').reverse().join('');
+        }
+
+        // Task 2: Prime Number Checker
+        function isPrime(num) {
+            if (num <= 1) return false;
+            for (let i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i === 0) return false;
+            }
+            return true;
+        }
+
+        function checkPrime() {
+            const num = parseInt(document.getElementById("numInput").value);
+            const result = isPrime(num) ? `${num} is a Prime Number` : `${num} is NOT a Prime Number`;
+            document.getElementById("output2").innerHTML = result;
+        }
+
+        // Task 3: Remove Duplicates
+        function removeDuplicates() {
+            const arr = document.getElementById("arrInput1").value.split(',').map(v => v.trim());
+            const unique = [...new Set(arr)];
+            document.getElementById("output3").innerHTML = unique.join(', ');
+        }
+
+        // Task 4: Count Occurrences
+        function countOccurrences() {
+            const arr = document.getElementById("arrInput2").value.split(',').map(v => v.trim());
+            const counts = {};
+            arr.forEach(item => counts[item] = (counts[item] || 0) + 1);
+            document.getElementById("output4").innerHTML = JSON.stringify(counts);
+        }
+
+        // Task 5: Palindrome Checker
+        function checkPalindrome() {
+            const str = document.getElementById("palInput").value.toLowerCase().replace(/[^a-z0-9]/g, '');
+            const reversed = str.split('').reverse().join('');
+            const result = (str === reversed) ? "It's a Palindrome" : "Not a Palindrome";
+            document.getElementById("output5").innerHTML = result;
+        }
+    </script>
+</body>
+
+</html>
